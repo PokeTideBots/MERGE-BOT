@@ -81,15 +81,15 @@ async def MergeSub(filePath: str, subPath: str, user_id):
             subTrack += 1
     input_files += f"-i '{filePath}' -i '{subPath}' "
     maps += f"-map 1:s "
-    metadata += f"-metadata:s:s:{subTrack} title='Track {subTrack+1} - tg@yashoswalyo' "
+    metadata += f"-metadata:s:s:{subTrack} title='Track {subTrack+1} - tg@PokeTide' "
     subTrack += 1
     LOGGER.info("Sub muxing")
     subprocess.call(
-        f"ffmpeg -hide_banner {input_files}-map 0:v:0 -map 0:a:? -map 0:s:? {maps}{metadata}-c:v copy -c:a copy -c:s srt './downloads/{str(user_id)}/[@yashoswalyo]_softmuxed_video.mkv' ",
+        f"ffmpeg -hide_banner {input_files}-map 0:v:0 -map 0:a:? -map 0:s:? {maps}{metadata}-c:v copy -c:a copy -c:s srt './downloads/{str(user_id)}/[@PokeTide]_softmuxed_video.mkv' ",
         shell=True,
     )
     orgFilePath = shutil.move(
-        f"./downloads/{str(user_id)}/[@yashoswalyo]_softmuxed_video.mkv", filePath
+        f"./downloads/{str(user_id)}/[@PokeTide]_softmuxed_video.mkv", filePath
     )
     return orgFilePath
 
@@ -121,15 +121,15 @@ def MergeSubNew(filePath: str, subPath: str, user_id, file_list):
     for j in range(1, (len(file_list))):
         maps += f"-map {j}:s "
         metadata += (
-            f"-metadata:s:s:{subTrack} title='Track {subTrack+1} - tg@yashoswalyo' "
+            f"-metadata:s:s:{subTrack} title='Track {subTrack+1} - tg@PokeTide' "
         )
         subTrack += 1
     LOGGER.info("Sub muxing")
     subprocess.call(
-        f"ffmpeg -hide_banner {input_files}-map 0:v:0 -map 0:a:? -map 0:s:? {maps}{metadata}-c:v copy -c:a copy -c:s srt './downloads/{str(user_id)}/[@yashoswalyo]_softmuxed_video.mkv'",
+        f"ffmpeg -hide_banner {input_files}-map 0:v:0 -map 0:a:? -map 0:s:? {maps}{metadata}-c:v copy -c:a copy -c:s srt './downloads/{str(user_id)}/[@PokeTide]_softmuxed_video.mkv'",
         shell=True,
     )
-    return f"./downloads/{str(user_id)}/[@yashoswalyo]_softmuxed_video.mkv"
+    return f"./downloads/{str(user_id)}/[@PokeTide]_softmuxed_video.mkv"
 
 
 def MergeAudio(videoPath:str,files_list:list,user_id):
@@ -151,10 +151,10 @@ def MergeAudio(videoPath:str,files_list:list,user_id):
         maps += f"-map {j}:a "
     LOGGER.info("Merging files now")
     subprocess.call(
-        f"ffmpeg -hide_banner {inputfiles}-map 0:v:0 -map 0:a:? {maps}-map 0:s:? -c:v copy -c:a copy -c:s copy {rmDispositions}-disposition:a:{audioTracks} default './downloads/{str(user_id)}/[@yashoswalyo]_export.mkv'",
+        f"ffmpeg -hide_banner {inputfiles}-map 0:v:0 -map 0:a:? {maps}-map 0:s:? -c:v copy -c:a copy -c:s copy {rmDispositions}-disposition:a:{audioTracks} default './downloads/{str(user_id)}/[@PokeTide]_export.mkv'",
         shell=True
     )
-    return f"./downloads/{str(user_id)}/[@yashoswalyo]_export.mkv"
+    return f"./downloads/{str(user_id)}/[@PokeTide]_export.mkv"
 
 async def cult_small_video(video_file, output_directory, start_time, end_time, format_):
     # https://stackoverflow.com/a/13891070/4723940
